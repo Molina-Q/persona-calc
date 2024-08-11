@@ -15,10 +15,9 @@ export default function DetailsPersona() {
     const personaType: { [key: string]: Persona } = PersonaData;
 
     const personaData = Object.entries(personaType).find(([name]) => name === persona);
+    
     const name = personaData && personaData[0];
     const details = personaData && personaData[1];
-
-    console.log(personaData);
 
     return (
         <div>
