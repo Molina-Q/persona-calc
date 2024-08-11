@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PersonaData from '../assets/PersonaData.json';
 import { getElementIcon } from '../utils/getElementIcon';
+import { Link } from 'react-router-dom';
 
 interface Persona {
     arcana: string;
@@ -27,7 +28,7 @@ export default function PersonaTable() {
         }
     });
     console.log(sortedPersonas);
-    
+
     return (
         <>
             <div className="sort-controls">
@@ -43,7 +44,9 @@ export default function PersonaTable() {
                 sortedPersonas.map(([name, details]) => (
                     <div className='table-row' key={name}>
                         <figure className='table-item'><img src={getElementIcon(details.inherits)} alt="element icon" /></figure>
-                        <p className='table-item'>{name}</p>
+                        <Link className='table-item' to={`/persona/${name}`}>
+                            <p>{name}</p>
+                        </Link>
                         <p className='table-item'>{details.lvl}</p>
                         <p className='table-item'>{details.arcana}</p>
                     </div>
