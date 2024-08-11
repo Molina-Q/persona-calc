@@ -11,9 +11,9 @@ interface Persona {
 export default function PersonaTable() {
 
     const [sortCriteria, setSortCriteria] = useState<string>('name');
-    const personas: { [key: string]: Persona } = PersonaData;
+    const personae: { [key: string]: Persona } = PersonaData;
 
-    const sortedPersonas = Object.entries(personas).sort(([nameA, detailsA], [nameB, detailsB]) => {
+    const sortedPersonas = Object.entries(personae).sort(([nameA, detailsA], [nameB, detailsB]) => {
         switch (sortCriteria) {
             case 'lvl':
                 return detailsA.lvl - detailsB.lvl;
@@ -26,7 +26,8 @@ export default function PersonaTable() {
                 return nameA.localeCompare(nameB);
         }
     });
-
+    console.log(sortedPersonas);
+    
     return (
         <>
             <div className="sort-controls">
