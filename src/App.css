@@ -37,7 +37,15 @@
   }
 
   figure.table-item {
-    height: 40px;
+    flex: 1;
     background-color: #474747;
+  }
+
+  a.table-item {
+    height: 100%;
+    
+    &:hover {
+      background-color: #cecece;
+    }
   }
 }
