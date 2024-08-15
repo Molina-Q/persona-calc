@@ -1,10 +1,12 @@
-import React from 'react'
+import { FaArrowLeft } from 'react-icons/fa';
 
 type Props = {}
 
 export default function BackArrow({ }: Props) {
-    const text = "<---";
+
     return (
-        <a className='backarrow' href='/'>{text}</a>
+        <a className='backarrow' href='/'>
+            <FaArrowLeft />
+        </a>
     )
 }
