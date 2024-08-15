@@ -43,9 +43,27 @@
 
   a.table-item {
     height: 100%;
-    
+
     &:hover {
       background-color: #cecece;
     }
+  }
+}
+
+.personaTitle {
+  display: flex;
+  flex-direction: row;
+}
+
+.backarrow {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #b8b8b8;
   }
 }
