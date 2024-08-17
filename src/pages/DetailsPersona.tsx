@@ -49,6 +49,17 @@ export default function DetailsPersona() {
                     ))}
                 </ul>
             </div>
+            <div className="personaStats">
+                <h2>Stats</h2>
+                <ul>
+                    <li>Agility: {details.stats.ag}</li>
+                    <li>Endurance: {details.stats.en}</li>
+                    <li>Luck: {details.stats.lu}</li>
+                    <li>Magic: {details.stats.ma}</li>
+                    <li>Strength: {details.stats.st}</li>
+                </ul>
+            </div>
+
 
  
 
