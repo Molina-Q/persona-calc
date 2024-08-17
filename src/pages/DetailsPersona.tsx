@@ -49,6 +49,7 @@ export default function DetailsPersona() {
                     ))}
                 </ul>
             </div>
+            
             <div className="personaStats">
                 <h2>Stats</h2>
                 <ul>
@@ -60,9 +61,14 @@ export default function DetailsPersona() {
                 </ul>
             </div>
 
-
- 
-
+            <div className="personaResists">
+                <h2>Resists</h2>
+                <ul>
+                    {Object.entries(details.resists).map(([element, value]) => (
+                        <li key={element}>{element}: {value}</li>
+                    ))}
+                </ul>
+            </div>
 
         </div>
     )
