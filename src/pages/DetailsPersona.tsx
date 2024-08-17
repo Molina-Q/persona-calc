@@ -6,6 +6,15 @@ interface Persona {
     arcana: string;
     inherits: string;
     lvl: number;
+    resists: { [key: string]: string };
+    skills: { [key: string]: number };
+    stats: {
+        ag: number;
+        en: number;
+        lu: number;
+        ma: number;
+        st: number;
+    };
 }
 
 export default function DetailsPersona() {
@@ -17,8 +26,8 @@ export default function DetailsPersona() {
     const personaData = Object.entries(personaType).find(([name]) => name === persona);
 
     if (!personaData) return <h1>Persona not found</h1>
-    
-    const [ name, details ] = personaData;
+
+    const [name, details] = personaData;
 
     return (
         <div>
@@ -31,6 +40,17 @@ export default function DetailsPersona() {
                 </div>
                 <p>{details.arcana}</p>
             </div>
+
+            <div className="personaSkills">
+                <h2>Skills</h2>
+                <ul>
+                    {Object.entries(details.skills).map(([skill, level]) => (
+                        <li key={skill}>{skill}: {level}</li>
+                    ))}
+                </ul>
+            </div>
+
+ 
 
 
         </div>
