@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import PersonaData from '../assets/PersonaData.json';
 import BackArrow from "../components/BackArrow";
 import { getResists } from "../utils/getResists";
+import { capitalizeFirstLetter } from "../utils/getElementIcon";
 
 interface Persona {
     arcana: string;
@@ -19,8 +20,16 @@ interface Persona {
 }
 
 export default function DetailsPersona() {
-    const params = useParams()
+    const params = useParams();
     const persona = params.persona;
+
+    const personaType: { [key: string]: Persona } = PersonaData;
+
+    const personaData = Object.entries(personaType).find(([name]) => name === persona);
+
+    if (!personaData) return <h1>Persona not found</h1>;
+
+    const [name, details] = personaData;
 
     const elementResists: { [key: string]: string } = {
         Phys: "",
@@ -33,19 +42,11 @@ export default function DetailsPersona() {
         Bless: "",
         Curse: "",
         Gun: "",
-    }
+    };
 
-    const personaType: { [key: string]: Persona } = PersonaData;
-
-    const personaData = Object.entries(personaType).find(([name]) => name === persona);
-
-    if (!personaData) return <h1>Persona not found</h1>
-
-    const [name, details] = personaData;
-
-    const editElementResists = (element: string, value: string) => {
-        elementResists[element] = value;
-    }
+    Object.entries(details.resists).map(([element, value]) => (
+        elementResists[capitalizeFirstLetter(element)] = value
+    ));
 
     return (
         <div>
@@ -84,9 +85,16 @@ export default function DetailsPersona() {
 
             <div className="personaResists">
                 <h2>Resists</h2>
-                {Object.entries(details.resists).map(([element, value]) => (
-                    <p key={element}>{element}: {getResists(value)}</p>
-                ))}
+                <div>
+                    {Object.entries(elementResists).map(([element, value]) => (
+                        <div className="table-col" key={element}>
+                            <div className="table-row">
+                                <p className="table-item">{element}</p>
+                                <p className="table-item">{getResists(value)}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
 
         </div>
