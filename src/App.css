@@ -72,3 +72,7 @@
     background-color: #b8b8b8;
   }
 }
+
+.personaSkills {
+  display: flex;
+}
