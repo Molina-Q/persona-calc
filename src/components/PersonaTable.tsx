@@ -27,6 +27,7 @@ export default function PersonaTable() {
                 return nameA.localeCompare(nameB);
         }
     });
+
     console.log(sortedPersonas);
 
     return (
@@ -43,8 +44,10 @@ export default function PersonaTable() {
             {
                 sortedPersonas.map(([name, details]) => (
                     <div className='table-row' key={name}>
-                        <figure className='table-item'><img src={getElementIcon(details.inherits)} alt="element icon" /></figure>
-                        <Link className='table-item' to={`/persona/${name}`}>
+                        <figure className='table-item'>
+                            <img src={getElementIcon(details.inherits)} alt="element icon" />
+                        </figure>
+                        <Link to={`/persona/${name}`} className='table-item' >
                             <p>{name}</p>
                         </Link>
                         <p className='table-item'>{details.lvl}</p>
